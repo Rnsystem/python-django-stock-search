@@ -1,5 +1,14 @@
 ## Python Django Stock Search
 
+![Python](https://img.shields.io/badge/Python-3.9-blue)
+![Django](https://img.shields.io/badge/Django-4.2-green)
+![MySQL](https://img.shields.io/badge/DB-MySQL-lightgrey)
+![REST API](https://img.shields.io/badge/API-REST-red)
+![Bootstrap](https://img.shields.io/badge/Frontend-Bootstrap%204-purple)
+![Virtualenv](https://img.shields.io/badge/Env-virtualenv-orange)
+![environ](https://img.shields.io/badge/Env%20Mgmt-python--environ-blueviolet)
+[![Author](https://img.shields.io/badge/author-RyohmaU-lightgrey)](https://rnsystem.jp)
+
 Djangoで構築された在庫監視・商品トラッキングWebアプリケーションです。  
 楽天市場APIと連携して商品在庫を取得し、定期的に状態を監視します。  
 また、アーキテクチャは **他ECモールAPIにも拡張しやすい汎用設計**となっています。
