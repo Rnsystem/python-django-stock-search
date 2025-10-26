@@ -22,8 +22,9 @@ Djangoで構築された在庫監視・商品トラッキングWebアプリケ�
 | ログイン画面 | ![Login](./images/sample01.jpg) |
 | システムお知らせ画面 | ![Notice](./images/sample02.jpg) |
 | Job実行履歴画面 | ![Job History](./images/sample03.jpg) |
-| 商品在庫監視画面 | ![Stock Monitor](./images/sample04.jpg) |
-| システム設定画面 | ![System Settings](./images/sample05.jpg) |
+| 商品監視画面 | ![item Monitor](./images/sample04.jpg) |
+| 在庫監視画面 | ![Stock Monitor](./images/sample05.jpg) |
+| システム設定画面 | ![System Settings](./images/sample06.jpg) |
 
 ---
 
