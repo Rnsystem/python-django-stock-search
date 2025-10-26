@@ -1,0 +1,17 @@
+
+{% extends 'settings/settings_stores_list.html' %}
+{% block content %}
+
+<div id="content" class="container-fluid">
+  <h4>{{ store.name }}</h4>
+  <hr class="hr_subTitle">
+  <!-- テーブル表の定義 -->
+  処理が実行されました。<br>
+  処理完了までしばらくお待ちください。<br>
+  進捗状況は実行履歴で確認できます。<br>
+  <!-- ここまでがテーブル表の定義 -->
+  <hr class="hr_subTitle">
+  <button class="page-link" type=“button” onclick="location.href='{{request.META.HTTP_REFERER}}'" style='color:white; background-color:cadetblue; text-align:center;'>戻る</button>
+</div>
+
+{% endblock %}

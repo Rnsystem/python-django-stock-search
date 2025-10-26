@@ -1,0 +1,96 @@
+
+{% extends 'settings/settings_stores_list.html' %}
+{% block content %}
+
+<div id="content" class="container-fluid">
+  <h4>{{ store.name }}</h4>
+  <hr class="hr_subTitle">
+  <!-- テーブル表の定義 -->
+  {% if store.get_is_exe_display == "連動" %}
+  <table id="menu_list" width="100%" class="table table-striped table-bordered table-hover">
+    <thead>
+      <td class="text-center" width=”40%”><button class="page-link" type="button" name="items_update_button" data-bs-toggle="modal" data-bs-target="#itemsUpdateModal-{{store.pk}}" style='color:white; background-color:cadetblue; margin:auto;'>今すぐ商品情報更新</button></th>
+      <td class="text-center" width=”50%”><button class="page-link" type="button" name="stocks_update_button" data-bs-toggle="modal" data-bs-target="#stocksUpdateModal-{{store.pk}}" style='color:white; background-color:cadetblue; margin:auto;'>今すぐ在庫情報更新</button></td>
+    </thead>
+  </table>
+  <table id="menu_list" width="100%" class="table table-striped table-bordered table-hover">
+    <thead>
+      <td><a class="page-link" href="{% url 'app_folder:settings_deliveries_list' store.pk %}" style='color:white; background-color:cadetblue; text-align:center;'>納期管理情報の編集</a></td>
+    </thead>
+  </table>
+  
+  
+  {% include 'settings/settings_stores_detail_modal.html' %}
+  {% endif %}
+  <table id="menu_list" width="100%" class="table table-striped table-bordered table-hover">
+    　<!-- 表の列の定義-->
+    <thead>
+    <tr>
+      <th class="text-center" width=”40%”>連動状態</th>
+      <td class="text-center" width=”60%”>{{ store.get_is_exe_display }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>店舗URL</th>
+      <td class="text-center" width="60%">{{ store.url }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>API管理番号</th>
+      <td class="text-center" width="60%">{{ store.api_No }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>API管理ID</th>
+      <td class="text-center" width="60%">{{ store.api_ID }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>API管理キー</th>
+      <td class="text-center" width="60%" style="-webkit-text-security:disc;">{{ store.api_Key }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>ショップ名</th>
+      <td class="text-center" width="60%">{{ store.shop_Name }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>ショップURL</th>
+      <td class="text-center" width="60%">{{ store.shop_URL }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>ショップコード</th>
+      <td class="text-center" width="60%">{{ store.shop_Code }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>ショップ管理番号</th>
+      <td class="text-center" width="60%">{{ store.shop_No }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>ショップ管理ID</th>
+      <td class="text-center" width="60%">{{ store.shop_ID }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>ショップ管理パスワード</th>
+      <td class="text-center" width="60%"  style="-webkit-text-security:disc;">{{ store.shop_Password }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>ユーザ名</th>
+      <td class="text-center" width="60%">{{ store.user_Name }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>ユーザ管理番号</th>
+      <td class="text-center" width="60%">{{ store.user_No }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>ユーザID</th>
+      <td class="text-center" width="60%">{{ store.user_ID }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" width=”40%”>ユーザパスワード</th>
+      <td class="text-center" width="60%"  style="-webkit-text-security:disc;">{{ store.user_Password }}</td>
+    </tr>
+    </thead>
+    　<!-- ここまでが表のデータ部分の表示-->
+  </table>
+  <!-- ここまでがテーブル表の定義 -->
+  <hr class="hr_subTitle">
+  <a class="page-link" href="{% url 'app_folder:settings_stores_update' store.pk %}" style='color:white; background-color:cadetblue; text-align:center;'>編集</a>
+</div>
+
+{% endblock %}

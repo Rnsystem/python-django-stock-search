@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block sidemenu_contents %}
+
+
+<div id="content" class="container-fluid">
+    <h4>{{ object.sys_datetime_created }}</h4>
+    <hr class="hr_subTitle">
+    <!-- テーブル表の定義 -->
+    <table id="menu_list" width="100%" class="table table-striped table-bordered table-hover">
+        <!-- 表の列の定義-->
+        <thead>
+            <tr>
+                <th class="text-center" colspan="4"><a href="{{ ichibaItems.itemUrl }}" ><img src="{{ ichibaItems.imageUrl }}" alt="{{ ichibaItems.itemCode }}" width="200" height="200"></a></td>
+            </tr>
+            <tr>
+                <th class="text-center" colspan="4"><img src="data:image/png;base64,{{ chart | safe }}"></td>
+            </tr>
+            <tr>
+                <th class="text-center">モール名</th>
+                <td class="text-center">{{ ichibaItems.stores.malls.name }}</td>
+                <th class="text-center">店舗名</th>
+                <td class="text-center">{{ ichibaItems.stores.name }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">商品コード</th>
+                <td class="text-center">{{ ichibaItems.itemCode  }}</td>
+                <th class="text-center">商品Url</th>
+                <td class="text-center">{{ ichibaItems.itemUrl  }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">登録日時</th>
+                <td class="text-center">{{ ichibaItems.sys_datetime_created }}</td>
+                <th class="text-center">更新日時</th>
+                <td class="text-center">{{ ichibaItems.sys_datetime_modified }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">販売価格</th>
+                <td class="text-center">{{ ichibaItems.itemPrice }}</td>
+                <th class="text-center">ポイント倍率</th>
+                <td class="text-center"></td>
+            </tr>
+            <tr>
+                <th class="text-center">レビュー平均</th>
+                <td class="text-center">{{ ichibaItems.reviewAverage }}</td>
+                <th class="text-center">レビュー数</th>
+                <td class="text-center">{{ ichibaItems.reviewCount }}</td>
+            </tr>
+            <!-- <tr> -->
+                <!--<td class="text-center">{{ item.items.isIncludedPostage }}</td>
+                {# object.model名_set で、このテーブルを親テーブルとしてる子テーブルを逆参照できる #}-->
+                <!-- {% for itm_daily in ichibaItems.related_ichibaItems_daily_ichibaItems.all %}
+                <th class="text-center">{{ itm_daily.daily }}</th>
+                {% endfor %} -->
+            <!-- </tr> -->
+        </thead>
+        　<!-- ここまでが表のデータ部分の表示-->
+    </table>
+    <!-- ここまでがテーブル表の定義 -->
+    <hr class="hr_subTitle">
+    <a class="page-link" href="{{request.META.HTTP_REFERER}}" style='color:white; background-color:cadetblue; text-align:center;'>戻る</a>
+</div>
+
+
+{% endblock %}

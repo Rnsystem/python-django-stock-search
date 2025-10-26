@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block sidemenu_contents %}
+
+<div id="content" class="container-fluid">
+    <h4>商品管理</h4>
+    <hr class="hr_subTitle">
+    <h5>検索</h5>
+    <form action="" method="get">
+        <input name="query" value="{{ request.GET.query }}" type="text">
+        <button type="submit">検索する</button>
+    </form>
+    <hr class="hr_subTitle">
+    <div class="row flex-xl-nowrap">
+        <!-- テーブル表の定義 -->
+        <table id="menu_list" width="100%" class="table table-striped table-bordered table-hover">
+            <!-- 表の列の定義-->
+            <thead>
+                <tr>
+                    <th class="text-center" width="5%">ショップ名</th>
+                    <th class="text-center" width="5%">イメージ画像</th>
+                    <th class="text-center" width="5%">商品番号</th>
+                    <th class="text-center" width="5%">ジャンル名</th>
+                    <th class="text-center" width="5%">販売価格</th>
+                    <th class="text-center" width="5%">レビュー平均</th>
+                    <th class="text-center" width="5%">レビュー数</th>
+                    <!-- <th class="text-center" width="5%">送料</th> -->
+                    <th class="text-center" width="5%">更新日時</th>
+                    <th class="text-center" width="5%">詳細</th>
+                </tr>
+                {% for item in ichibaItems %}
+                <tr>
+                    <td class="text-center">{{ item.stores.name }}</td>
+                    <td class="text-center"><a href="{{ item.itemUrl }}" ><img src="{{ item.imageUrl }}" alt="{{ item.itemName }}" width="100" height="100"></a></td>
+                    <td class="text-center">{{ item.itemCode }}</td>
+                    <td class="text-center">{{ item.ichibaGenres.genreName }}</td>
+                    <td class="text-center">{{ item.itemPrice }}</td>
+                    <td class="text-center">{{ item.reviewAverage }}</td>
+                    <td class="text-center">{{ item.reviewCount }}</td>
+                    <!--<td class="text-center">{{ item.items.isIncludedPostage }}</td>
+                    {# object.model名_set で、このテーブルを親テーブルとしてる子テーブルを逆参照できる #}-->
+                    <!-- <td class="text-center">
+                        {% for itm in item.related_items_ichiba_item.all %}
+                            {{ itm.itemNumber }}
+                        {% endfor %}
+                    </td> -->
+                    <td class="text-center">{{ item.sys_datetime_modified }}</td>
+                    <td class="text-center"><a class="page-link" style='color:white; background-color:cadetblue; text-align:center;' href="{% url 'app_folder:items_detail' item.pk %}">詳細</a></td>
+                </tr>
+                {% endfor %}
+            </thead>
+            　<!-- ここまでが表のデータ部分の表示-->
+        </table>
+        <!-- ここまでがテーブル表の定義 -->
+    </div>
+    <hr class="hr_subTitle">
+    {% include 'list_pagination.html'%}
+</div>
+
+{% endblock %}

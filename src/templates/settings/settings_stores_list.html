@@ -1,0 +1,35 @@
+
+{% extends 'settings/settings_malls_list.html' %}
+{% block contents %}
+
+<div id="content" class="container-fluid">
+  <h4>店舗</h4>
+  <hr class="hr_subTitle">
+  <div class="row flex-xl-nowrap">
+    <!-- ↓↓サイドバー↓↓ -->
+    <div id="sidemenu" class="col-2 d-none d-md-block bg-light sidebar align-self-start">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          {% for store in stores %}
+          <li class="nav-item">
+            <nav class="navbar navbar-light bg-light">
+              <a class="navbar-brand" href="{% url 'app_folder:settings_stores_detail' store.pk %}">
+                <span data-feather=""></span>{{ store.name }}
+              </a>
+            </nav>
+          </li>
+          {% endfor %}    
+        </ul>
+      </div>
+    </div id="sidemenu">
+    <!-- ↑↑サイドバーここまで↑↑ -->
+    <!-- ↓↓コンテンツ本体↓↓ -->
+    <div class="col-10">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <!-- ↑↑コンテンツ本体ここまで↑↑ -->
+  </div>
+</div>
+
+{% endblock %}

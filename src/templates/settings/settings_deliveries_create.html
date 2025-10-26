@@ -1,0 +1,26 @@
+
+{% extends 'settings/settings_stores_list.html' %}
+{% block content %}
+
+<div id="content" class="container-fluid">
+  <h4>{{ store_name }}（納期管理情報）【新規作成】</h4>
+  <hr class="hr_subTitle">
+  <form method="POST"> 
+    {% csrf_token %}
+    <table id="menu_list" width="100%" class="table table-striped table-bordered table-hover">
+      <thead>
+        {% for field in form %}
+        <tr>
+          <th class="text-center" width=”40%”>{{ field.label_tag }}</th>
+          <td class="text-center" width=”60%”>{{ field }}</td>
+        </tr>
+        {% endfor %}
+      </thead>
+    </table>
+    <hr class="hr_subTitle">
+    <button class="btn btn-primary form-control" type="submit" style='color:white; background-color:cadetblue; text-align:center;'>新規登録</button>
+  </form>
+  <a class="page-link" href="{{request.META.HTTP_REFERER}}" style='color:white; background-color:cadetblue; text-align:center;'>キャンセル</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block sidemenu_contents %}
+
+<div id="content" class="container-fluid">
+    <h4>お知らせ</h4>
+    <hr class="hr_subTitle">
+    <div class="row flex-xl-nowrap">
+        <!-- テーブル表の定義 -->
+        <table id="menu_list" width="100%" class="table table-striped table-bordered table-hover">
+            <!-- 表の列の定義-->
+            <thead>
+                <tr>
+                    <th class="text-center" width="20%">投稿日時</th>
+                    <th class="text-center" width="70%">タイトル</th>
+                    <th class="text-center" width="10%">詳細</th>
+                </tr>
+                {% for new in news %}
+                <tr>
+                    <td class="text-center">{{ new.posting_datetime }}</td>
+                    <td class="text-center">{{ new.title }}</td>
+                    <td class="text-center"><a class="page-link" style='color:white; background-color:cadetblue; text-align:center;' href="{% url 'app_folder:news_detail' new.pk %}">詳細</a></td>
+                </tr>
+                {% endfor %}
+            </thead>
+            　<!-- ここまでが表のデータ部分の表示-->
+        </table>
+        <!-- ここまでがテーブル表の定義 -->
+    </div>
+    <hr class="hr_subTitle">
+    {% include 'list_pagination.html'%}
+</div>
+
+{% endblock %}

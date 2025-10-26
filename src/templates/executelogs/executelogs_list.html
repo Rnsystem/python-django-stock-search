@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block sidemenu_contents %}
+
+<div id="content" class="container-fluid">
+    <h4>実行履歴</h4>
+    <hr class="hr_subTitle">
+    <div class="row flex-xl-nowrap">
+        <!-- テーブル表の定義 -->
+        <table id="menu_list" width="100%" class="table table-striped table-bordered table-hover">
+            <!-- 表の列の定義-->
+            <thead>
+                <tr>
+                    <th class="text-center" width="10%">実行日時</th>
+                    <th class="text-center" width="5%">ステータス</th>
+                    <th class="text-center" width="5%">タイプ</th>
+                    <th class="text-center" width="5%">モール名</th>
+                    <th class="text-center" width="5%">店舗名</th>
+                    <th class="text-center" width="5%">実行者</th>
+                    <th class="text-center" width="10%">開始日時</th>
+                    <th class="text-center" width="10%">終了日時</th>
+                    <th class="text-center" width="5%">詳細</th>
+                </tr>
+                {% for executelog in executelogs %}
+                <tr>
+                    <td class="text-center">{{ executelog.sys_datetime_created }}</td>
+                    <td class="text-center">{{ executelog.get_execute_status_display }}</td>
+                    <td class="text-center">{{ executelog.get_execute_type_display }}</td>
+                    <td class="text-center">{{ executelog.stores.malls.name }}</td>
+                    <td class="text-center">{{ executelog.stores.name }}</td>
+                    <td class="text-center">{{ executelog.user }}</td>
+                    <td class="text-center">{% if executelog.execute_datetime_start == None %}-{% else %}{{ executelog.execute_datetime_start }}{% endif %} </td>
+                    <td class="text-center">{% if executelog.execute_datetime_end == None %}-{% else %}{{ executelog.execute_datetime_end }}{% endif %} </td>
+                    <td class="text-center"><a class="page-link" style='color:white; background-color:cadetblue; text-align:center;' href="{% url 'app_folder:executelogs_detail' executelog.pk %}">詳細</a></td>
+                </tr>
+                {% endfor %}
+            </thead>
+            　<!-- ここまでが表のデータ部分の表示-->
+        </table>
+        <!-- ここまでがテーブル表の定義 -->
+    </div>
+    <hr class="hr_subTitle">
+    {% include 'list_pagination.html'%}
+</div>
+
+{% endblock %}
